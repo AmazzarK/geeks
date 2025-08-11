@@ -13,6 +13,7 @@ print("Your list of numbers is:", numbers)
 
 user_input = input("Enter a string: ")
 result = ""
+
 for i in range(len(user_input)):
      
          if i == 0 or user_input[i] != user_input[i - 1]:
