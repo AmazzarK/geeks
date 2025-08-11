@@ -38,7 +38,8 @@ print(f"Set before removing last number: {my_fav_number}")
 
 new_tuple = (9,11,48)
 updated_tuple = new_tuple + (99, 100)
-print(f"Updated tuple: {updated_tuple}")
+print(f"it's possible to add more integers in a tuple for exemple my Updated tuple will looks like : {updated_tuple}")
+
 
 #this is exercices 07
 basket  = ["Banana", "Apples", "Oranges", "Blueberries"]
@@ -53,3 +54,12 @@ print(f"Final basket: {basket}")
 #this is exercices 08
 
 sandwich_orders = ["Tuna sandwich", "Pastrami sandwich", "Avocado sandwich", "Pastrami sandwich", "Egg sandwich", "Chicken sandwich", "Pastrami sandwich"]
+
+while "Pastrami sandwich" in sandwich_orders:
+    sandwich_orders.remove("Pastrami sandwich")
+
+
+finished_sandwiches = []
+for sandwich in sandwich_orders:
+    print(f"I made your {sandwich}.")
+    finished_sandwiches.append(sandwich)
