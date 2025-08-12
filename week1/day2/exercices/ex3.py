@@ -1,31 +1,3 @@
-#Exercise 1 : Convert lists into dictionaries
-
-
-my_dict = dict(zip(['Ten', 'Twenty', 'Thirty'], [10, 20, 30]))  
-
-print(my_dict) 
-
-#Exercise 2 : cinemax
-
-#function
-family = {"rick": 43, 'beth': 13, 'morty': 5, 'summer': 8}
-family_list = list(family.items())
-
-def cinemax(name, age):
-    if age < 3:
-        return f"{name} gets a free ticket."
-    elif 3 <= age < 12:
-        return f"{name} gets a ticket for $10."
-    else:
-        return f"{name} gets a ticket for $15."
-
-
-#test
-print(cinemax('rick', 43))  
-print(cinemax('beth', 13)) 
-print(cinemax('morty', 5)) 
-print(cinemax('summer', 8))  
-
 #Exercise 3 : Zara
 
 #dictionary brand qst1
@@ -113,17 +85,6 @@ brand_dict.update(dict_more_on_zara)
 print("After adding the new information, the brand dictionary is:")
 print(brand_dict)   
 
-#number_stores  
-
-
-
-
-
-
-
-
-
-
-
-#exercice 4
-
+#number_stores  qst13
+number_stores = brand_dict['number_stores']
+print(f"Zara has {number_stores} stores worldwide.")
