@@ -54,5 +54,5 @@ def get_short_info(self):
     sentence += "."
     return sentence
 
-#test
+#test 
 print(macdonald.get_short_info())
