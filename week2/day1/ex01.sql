@@ -1,12 +1,12 @@
 CREATE TABLE items (
-    ID_Item INT PRIMARY KEY,
+    ID_Item INT PRIMARY KEY serial,
     Title_Item VARCHAR(100),
     Price INT
 );
 
 
 CREATE TABLE customers (
-    ID_Customer INT PRIMARY KEY,
+    ID_Customer INT PRIMARY KEY serial,
     First_name VARCHAR(100),
     last_name VARCHAR(100),
 );
