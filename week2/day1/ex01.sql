@@ -1,3 +1,5 @@
+CREATE DATABASE public;
+
 CREATE TABLE items (
     ID_Item INT PRIMARY KEY serial,
     Title_Item VARCHAR(100),
