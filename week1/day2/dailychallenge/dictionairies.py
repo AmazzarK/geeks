@@ -1,15 +1,15 @@
 qst=input("Enter a word: ")
 
-dict = {
-
-    "word": qst
-    
-    }
+dict = {}
 
 for index, value in enumerate(qst):
-    my_dict=print(index, value)
+    if value in dict:
+        dict[value].append(index)
+    else:
+        dict[value]=[index]
 
 
 
+print(dict)
 
-print(my_dict)
+
