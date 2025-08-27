@@ -1,0 +1,60 @@
+<!-- templates/stats.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="text-3xl font-bold mb-6">Collection Statistics</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">Overview</h2>
+        <div class="space-y-2">
+            <div class="flex justify-between">
+                <span class="text-gray-600">Total Games:</span>
+                <span class="font-semibold">{{ total_games }}</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-gray-600">Total Reviews:</span>
+                <span class="font-semibold">{{ total_reviews }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">Games by Platform</h2>
+        <div class="space-y-2">
+            {% for platform, count in platforms %}
+            <div class="flex justify-between">
+                <span class="text-gray-600">{{ platform }}:</span>
+                <span class="font-semibold">{{ count }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">Games by Genre</h2>
+        <div class="space-y-2">
+            {% for genre, count in genres %}
+            <div class="flex justify-between">
+                <span class="text-gray-600">{{ genre }}:</span>
+                <span class="font-semibold">{{ count }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-xl font-semibold mb-4">Average Ratings</h2>
+        <div class="space-y-2">
+            {% for title, avg_rating in avg_ratings %}
+            <div class="flex justify-between">
+                <span class="text-gray-600">{{ title }}:</span>
+                <span class="font-semibold">{{ "%.1f"|format(avg_rating) }}/5</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

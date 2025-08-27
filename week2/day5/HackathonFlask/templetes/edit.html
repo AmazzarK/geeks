@@ -1,0 +1,56 @@
+<!-- templates/edit.html -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-6">Edit Game</h1>
+    
+    <form action="{{ url_for('edit_game', game_id=game.id) }}" method="POST" class="space-y-4">
+        <div>
+            <label for="title" class="block text-gray-700 mb-1">Game Title</label>
+            <input type="text" id="title" name="title" value="{{ game.title }}"
+                   class="w-full px-3 py-2 border rounded-md" required>
+        </div>
+        
+        <div>
+            <label for="release_year" class="block text-gray-700 mb-1">Release Year</label>
+            <input type="number" id="release_year" name="release_year" value="{{ game.release_year }}"
+                   class="w-full px-3 py-2 border rounded-md" min="1950" max="2030" required>
+        </div>
+        
+        <div>
+            <label for="genre" class="block text-gray-700 mb-1">Genre</label>
+            <input type="text" id="genre" name="genre" value="{{ game.genre }}"
+                   class="w-full px-3 py-2 border rounded-md" required>
+        </div>
+        
+        <div>
+            <label for="platform" class="block text-gray-700 mb-1">Platform</label>
+            <select id="platform" name="platform" class="w-full px-3 py-2 border rounded-md" required>
+                <option value="PC" {% if game.platform == 'PC' %}selected{% endif %}>PC</option>
+                <option value="PlayStation" {% if game.platform == 'PlayStation' %}selected{% endif %}>PlayStation</option>
+                <option value="Xbox" {% if game.platform == 'Xbox' %}selected{% endif %}>Xbox</option>
+                <option value="Nintendo Switch" {% if game.platform == 'Nintendo Switch' %}selected{% endif %}>Nintendo Switch</option>
+                <option value="Mobile" {% if game.platform == 'Mobile' %}selected{% endif %}>Mobile</option>
+                <option value="Other" {% if game.platform == 'Other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+        
+        <div>
+            <label for="image_url" class="block text-gray-700 mb-1">Image URL (optional)</label>
+            <input type="url" id="image_url" name="image_url" value="{{ game.image_url if game.image_url else '' }}"
+                   class="w-full px-3 py-2 border rounded-md">
+        </div>
+        
+        <div class="flex space-x-4">
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded">
+                Update Game
+            </button>
+            <a href="{{ url_for('game_details', game_id=game.id) }}" 
+               class="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded">
+                Cancel
+            </a>
+        </div>
+    </form>
+</div>
+{% endblock %}
