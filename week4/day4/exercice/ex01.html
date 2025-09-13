@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1: HTML Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]:focus, textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        .info-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e8f4fd;
+            border-radius: 4px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .answer {
+            background-color: #fff3cd;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .current-url {
+            font-family: monospace;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Exercise 1: HTML Form</h1>
+        
+        <!-- HTML Form with GET method -->
+        <form action="ex01.html" method="GET">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Send">
+            </div>
+        </form>
+        
+        <div class="info-section">
+            <h3>Form Information:</h3>
+            <ul>
+                <li><strong>Method:</strong> GET</li>
+                <li><strong>Action:</strong> ex01.html (same file)</li>
+                <li><strong>Input Fields:</strong> name (text), message (textarea)</li>
+            </ul>
+        </div>
+        
+        <div class="answer">
+            <h3>📍 Answer: Where will the sent data appear?</h3>
+            <p><strong>The sent data will appear in the URL (address bar) as query parameters!</strong></p>
+            
+            <p><strong>Why?</strong> When using the GET method:</p>
+            <ul>
+                <li>Form data is appended to the URL as query string parameters</li>
+                <li>Data is visible in the browser's address bar</li>
+                <li>Format: <code>filename.html?name=value&message=value</code></li>
+            </ul>
+            
+            <p><strong>Example:</strong> If you enter "John" as name and "Hello World" as message, the URL will look like:</p>
+            <div class="current-url">
+                ex01.html?name=John&message=Hello+World
+            </div>
+            
+            <p><strong>Note:</strong> Spaces and special characters are URL-encoded (e.g., space becomes +)</p>
+        </div>
+        
+        <!-- Display current URL parameters if any -->
+        <script>
+            // JavaScript to show current URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            const message = urlParams.get('message');
+            
+            if (name || message) {
+                const resultDiv = document.createElement('div');
+                resultDiv.className = 'info-section';
+                resultDiv.style.backgroundColor = '#d4edda';
+                resultDiv.style.borderLeftColor = '#28a745';
+                resultDiv.innerHTML = `
+                    <h3>🎉 Form Submitted Successfully!</h3>
+                    <p><strong>Submitted Data:</strong></p>
+                    <ul>
+                        <li><strong>Name:</strong> ${name || 'Not provided'}</li>
+                        <li><strong>Message:</strong> ${message || 'Not provided'}</li>
+                    </ul>
+                    <p><strong>Current URL:</strong></p>
+                    <div class="current-url">${window.location.href}</div>
+                `;
+                document.body.appendChild(resultDiv);
+            }
+        </script>
+    </div>
+</body>
+</html>

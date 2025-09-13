@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2: HTML Form #2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]:focus, textarea:focus {
+            border-color: #2196F3;
+            outline: none;
+        }
+        
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        input[type="submit"] {
+            background-color: #2196F3;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #1976D2;
+        }
+        
+        .info-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e3f2fd;
+            border-radius: 4px;
+            border-left: 4px solid #2196F3;
+        }
+        
+        .answer {
+            background-color: #fff8e1;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border-left: 4px solid #ff9800;
+        }
+        
+        .highlight {
+            background-color: #ffecb3;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+        
+        .network-instructions {
+            background-color: #f3e5f5;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 4px;
+            border-left: 4px solid #9c27b0;
+        }
+        
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .method-card {
+            padding: 15px;
+            border-radius: 4px;
+            border: 2px solid #ddd;
+        }
+        
+        .get-method {
+            background-color: #e8f5e8;
+            border-color: #4CAF50;
+        }
+        
+        .post-method {
+            background-color: #e3f2fd;
+            border-color: #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Exercise 2: HTML Form #2 (POST Method)</h1>
+        
+        <!-- HTML Form with POST method -->
+        <form action="ex2.html" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Send">
+            </div>
+        </form>
+        
+        <div class="info-section">
+            <h3>Form Information:</h3>
+            <ul>
+                <li><strong>Method:</strong> <span class="highlight">POST</span></li>
+                <li><strong>Action:</strong> ex2.html (same file)</li>
+                <li><strong>Input Fields:</strong> name (text), message (textarea)</li>
+            </ul>
+        </div>
+        
+        <div class="answer">
+            <h3>📍 Answer: Where will the sent data appear?</h3>
+            <p><strong>The sent data will appear in the <span class="highlight">Network Tab</span> of the browser's Developer Tools!</strong></p>
+            
+            <p><strong>Why?</strong> When using the POST method:</p>
+            <ul>
+                <li>Form data is sent in the <strong>request body</strong>, not in the URL</li>
+                <li>Data is <strong>not visible</strong> in the browser's address bar</li>
+                <li>You need to inspect the <strong>Network Tab</strong> to see the data</li>
+                <li>Data is transmitted securely (not exposed in URL)</li>
+            </ul>
+        </div>
+        
+        <div class="network-instructions">
+            <h3>🔍 How to View POST Data:</h3>
+            <ol>
+                <li><strong>Open Developer Tools:</strong> Press F12 or right-click → Inspect</li>
+                <li><strong>Go to Network Tab:</strong> Click on the "Network" tab</li>
+                <li><strong>Clear existing requests:</strong> Click the clear button (🗑️)</li>
+                <li><strong>Submit the form:</strong> Fill out and submit the form above</li>
+                <li><strong>Look for the request:</strong> Find "ex2.html" in the list</li>
+                <li><strong>Click on the request:</strong> View details</li>
+                <li><strong>Check "Request" or "Payload":</strong> See the form data there!</li>
+            </ol>
+        </div>
+        
+        <div class="comparison">
+            <div class="method-card get-method">
+                <h4>GET Method (Exercise 1)</h4>
+                <ul>
+                    <li>Data in URL parameters</li>
+                    <li>Visible in address bar</li>
+                    <li>Limited data size</li>
+                    <li>Cached by browsers</li>
+                    <li>Good for searches, filters</li>
+                </ul>
+            </div>
+            
+            <div class="method-card post-method">
+                <h4>POST Method (Exercise 2)</h4>
+                <ul>
+                    <li>Data in request body</li>
+                    <li>Hidden from URL</li>
+                    <li>Larger data capacity</li>
+                    <li>Not cached by default</li>
+                    <li>Good for forms, uploads</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h3>🎯 Key Differences from Exercise 1:</h3>
+            <ul>
+                <li><strong>URL stays clean:</strong> No query parameters added</li>
+                <li><strong>Data is hidden:</strong> Form data not visible in address bar</li>
+                <li><strong>More secure:</strong> Data not exposed in browser history</li>
+                <li><strong>Network inspection required:</strong> Use DevTools to see the data</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

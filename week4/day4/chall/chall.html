@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Challenge: HTTP, Forms, and JSON</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        
+        input[type="text"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            flex-grow: 1;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        
+        .clear-button {
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .clear-button:hover {
+            background-color: #da190b;
+        }
+        
+        .output-section {
+            margin-top: 40px;
+        }
+        
+        .json-result {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .submission-header {
+            background-color: #e9ecef;
+            padding: 10px 15px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .submission-header h3 {
+            margin: 0;
+            color: #495057;
+            font-size: 16px;
+        }
+        
+        .json-display {
+            padding: 15px;
+        }
+        
+        .json-display h4 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        
+        .json-code {
+            background-color: #f1f3f4;
+            border: 1px solid #d1d3d4;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 10px 0;
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #333;
+            overflow-x: auto;
+        }
+        
+        code {
+            background-color: #f1f3f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        .info-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196F3;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .expected-output {
+            background-color: #e8f5e8;
+            border-left: 4px solid #4CAF50;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Daily Challenge: HTTP, Forms, and JSON</h1>
+        
+        <div class="info-box">
+            <h3>Challenge Objectives:</h3>
+            <ul>
+                <li>Create a form with name and last name fields</li>
+                <li>Handle form submission with JavaScript</li>
+                <li>Convert form data to JSON format</li>
+                <li>Display JSON output on the DOM</li>
+            </ul>
+        </div>
+        
+        <div class="form-section">
+            <h2>User Information Form</h2>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your first name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                </div>
+                
+                <div class="button-group">
+                    <button type="submit">Send</button>
+                    <button type="button" class="clear-button" id="clearButton">Clear Output</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="expected-output">
+            <h3>Expected JSON Output Format:</h3>
+            <pre class="json-code">{"name":"John","lastName":"Doe"}</pre>
+            <p>The form data will be converted to JSON and displayed below when you submit the form.</p>
+        </div>
+        
+        <div class="output-section">
+            <h2>JSON Output</h2>
+            <div id="output">
+                <!-- JSON results will be appended here -->
+            </div>
+        </div>
+        
+        <div class="info-box">
+            <h3>Technical Details:</h3>
+            <ul>
+                <li><strong>HTTP Concepts:</strong> Form handling, event prevention</li>
+                <li><strong>Form Processing:</strong> Retrieving input values, validation</li>
+                <li><strong>JSON Conversion:</strong> JavaScript object to JSON string</li>
+                <li><strong>DOM Manipulation:</strong> Dynamic content creation and display</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script src="chall.js"></script>
+</body>
+</html>
