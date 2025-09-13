@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 Robo-Friends Search</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="app-title">
+                    <span class="robot-icon">🤖</span>
+                    ROBO-FRIENDS
+                    <span class="robot-icon">🤖</span>
+                </h1>
+                <p class="app-subtitle">Discover Your Robot Friends</p>
+            </div>
+        </header>
+
+        <!-- Search Section -->
+        <div class="search-section">
+            <div class="search-container">
+                <div class="search-input-wrapper">
+                    <input 
+                        type="text" 
+                        id="search-box" 
+                        class="search-input"
+                        placeholder=" Search robots by name, username, or email..."
+                        autocomplete="off"
+                    >
+                    <div class="search-icon"></div>
+                </div>
+                
+                <!-- Search Controls -->
+                <div class="search-controls">
+                    <button id="stats-button" class="control-btn stats-btn">
+                         Stats
+                    </button>
+                    <button onclick="shuffleRobots()" class="control-btn shuffle-btn">
+                        Shuffle
+                    </button>
+                    <button onclick="sortRobotsByName(true)" class="control-btn sort-btn">
+                        Sort A-Z
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Robot Cards Container -->
+            <div id="robots-container" class="robots-container">
+                <!-- Robot cards will be dynamically generated here -->
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 Robo-Friends. Made with Advanced JavaScript</p>
+                <div class="tech-stack">
+                    <span class="tech-item">ES6+</span>
+                    <span class="tech-item">Array Methods</span>
+                    <span class="tech-item">Object Destructuring</span>
+                    <span class="tech-item">Arrow Functions</span>
+                    <span class="tech-item">DOM Manipulation</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Loading Spinner (hidden by default) -->
+        <div class="loading-spinner" id="loading-spinner" style="display: none;">
+            <div class="spinner"></div>
+            <p>Loading Robots...</p>
+        </div>
+    </div>
+
+    <!-- Background Pattern -->
+    <div class="background-pattern"></div>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
